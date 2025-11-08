@@ -121,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="caracterTitle" destination="yRk-dU-mZU" id="ppq-Ns-YYZ"/>
+                        <outlet property="characterImageView" destination="WKn-OU-ofP" id="characterImageView-connection"/>
                         <outlet property="collectionView" destination="urf-Cz-dAW" id="R09-Xm-fYX"/>
                         <outlet property="textView" destination="qjv-Se-17f" id="jlE-Tk-Vmc"/>
                         <outlet property="titleLabel" destination="TjF-Iq-J84" id="hSX-kq-Ael"/>
