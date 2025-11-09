@@ -30,6 +30,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" weight="heavy"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="multiplayerBackButtonTapped:" destination="MYp-jf-Qvs" eventType="touchUpInside" id="bSy-dP-lPZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPT-TG-QIM">
                                 <rect key="frame" x="322.66666666666669" y="75" width="54.333333333333314" height="37.666666666666657"/>
@@ -40,13 +43,13 @@
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyI-rI-Hw1">
-                                <rect key="frame" x="144.33333333333334" y="131" width="104.33333333333334" height="32"/>
+                                <rect key="frame" x="144.33333333333334" y="75" width="104.33333333333334" height="32"/>
                                 <fontDescription key="fontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="25"/>
                                 <color key="textColor" name="TitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-ae-n6Z">
-                                <rect key="frame" x="0.0" y="183" width="393" height="635"/>
+                                <rect key="frame" x="0.0" y="112" width="393" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="69" id="y5T-ic-kpy" customClass="FriendTableViewCell" customModule="Exertia" customModuleProvider="target">
@@ -56,49 +59,56 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-UL-62Y">
-                                                    <rect key="frame" x="70" y="9" width="12" height="12"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-UL-62Y">
+                                                    <rect key="frame" x="68.666666666666671" y="3.6666666666666661" width="12" height="12"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <color key="tintColor" systemColor="systemGreenColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="12" id="CVY-oq-3BI"/>
+                                                        <constraint firstAttribute="height" constant="12" id="gNF-3S-r0k"/>
+                                                    </constraints>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="JDF-ya-utT">
-                                                    <rect key="frame" x="132.83333333333331" y="0.0" width="213.33333333333331" height="66.333333333333329"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JDF-ya-utT">
+                                                    <rect key="frame" x="137" y="8" width="226" height="53"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-XF-Z6Y">
-                                                            <rect key="frame" x="76.333333333333329" y="0.0" width="60.999999999999986" height="25.666666666666668"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="259" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-XF-Z6Y">
+                                                            <rect key="frame" x="82.666666666666657" y="0.0" width="61" height="18.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="20"/>
                                                             <color key="textColor" name="TitleColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="RGS-dT-A8y">
-                                                            <rect key="frame" x="0.0" y="28.666666666666668" width="213.33333333333334" height="37.666666666666657"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="RGS-dT-A8y">
+                                                            <rect key="frame" x="7" y="22.333333333333329" width="212" height="30.666666666666671"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkS-bJ-7kt">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="37.666666666666664"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkS-bJ-7kt">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" name="TitleColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="100" id="xZy-Cr-r7P"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" name="TitleColor"/>
                                                                     <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="filled" image="paperplane.fill" catalog="system" imagePlacement="leading" title="Invite" imagePadding="4">
+                                                                    <buttonConfiguration key="configuration" style="plain" image="paperplane.fill" catalog="system" imagePlacement="leading" imagePadding="4">
                                                                         <backgroundConfiguration key="background" strokeWidth="2">
                                                                             <color key="strokeColor" red="0.9267578125" green="0.4055175781" blue="0.9711914062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         </backgroundConfiguration>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="small" weight="ultraLight"/>
-                                                                        <fontDescription key="titleFontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="15"/>
                                                                         <color key="baseForegroundColor" red="0.9267578125" green="0.4055175781" blue="0.9711914062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     </buttonConfiguration>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5e-2b-4lt">
-                                                                    <rect key="frame" x="119.66666666666666" y="0.0" width="93.666666666666657" height="37.666666666666664"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5e-2b-4lt">
+                                                                    <rect key="frame" x="112" y="0.0" width="100" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" red="0.48901370170000003" green="0.66796875" blue="0.6708984375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="100" id="Ny8-0h-n34"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" name="TitleColor"/>
                                                                     <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="filled" image="info.circle.fill" catalog="system" title="Info" imagePadding="4">
+                                                                    <buttonConfiguration key="configuration" style="plain" image="info.circle.fill" catalog="system" imagePadding="4">
                                                                         <backgroundConfiguration key="background" strokeWidth="2">
                                                                             <color key="strokeColor" red="0.48901370170000003" green="0.66796875" blue="0.6708984375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         </backgroundConfiguration>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14"/>
-                                                                        <fontDescription key="titleFontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="15"/>
                                                                         <color key="baseForegroundColor" red="0.48901370170000003" green="0.66796875" blue="0.6708984375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     </buttonConfiguration>
                                                                 </button>
@@ -106,12 +116,24 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2R-yL-DIA">
-                                                    <rect key="frame" x="27" y="9" width="55" height="55"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I2R-yL-DIA">
+                                                    <rect key="frame" x="27" y="7" width="55" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="2Qe-Ty-1yL"/>
+                                                        <constraint firstAttribute="width" constant="55" id="Jri-RA-2Zh"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="I2R-yL-DIA" firstAttribute="centerY" secondItem="00g-x7-u4X" secondAttribute="centerY" id="4UU-os-Ks7"/>
                                                 <constraint firstItem="I2R-yL-DIA" firstAttribute="leading" secondItem="00g-x7-u4X" secondAttribute="leading" constant="27" id="59u-6c-IbD"/>
+                                                <constraint firstAttribute="trailing" secondItem="JDF-ya-utT" secondAttribute="trailing" constant="30" id="8vP-5O-GiA"/>
+                                                <constraint firstItem="ntL-UL-62Y" firstAttribute="centerY" secondItem="I2R-yL-DIA" secondAttribute="centerY" constant="-25" id="Jqt-Ut-sXY"/>
+                                                <constraint firstAttribute="bottom" secondItem="JDF-ya-utT" secondAttribute="bottom" constant="8" id="Les-eg-0oy"/>
+                                                <constraint firstItem="JDF-ya-utT" firstAttribute="centerY" secondItem="00g-x7-u4X" secondAttribute="centerY" id="ROt-BK-8Bb"/>
+                                                <constraint firstItem="JDF-ya-utT" firstAttribute="leading" secondItem="I2R-yL-DIA" secondAttribute="trailing" constant="55" id="Rxb-P6-ADn"/>
+                                                <constraint firstItem="JDF-ya-utT" firstAttribute="top" secondItem="00g-x7-u4X" secondAttribute="top" constant="8" id="VId-Zc-EJc"/>
+                                                <constraint firstItem="ntL-UL-62Y" firstAttribute="centerX" secondItem="I2R-yL-DIA" secondAttribute="centerX" constant="20" id="z1e-lQ-nuR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -128,7 +150,7 @@
                         <viewLayoutGuide key="safeArea" id="FL6-yt-5VH"/>
                         <color key="backgroundColor" red="0.06805419922" green="0.05548095703" blue="0.16552732880000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="zhe-ae-n6Z" firstAttribute="top" secondItem="yyI-rI-Hw1" secondAttribute="bottom" constant="20" id="8vv-Wx-ioS"/>
+                            <constraint firstItem="zhe-ae-n6Z" firstAttribute="top" secondItem="yyI-rI-Hw1" secondAttribute="bottom" constant="5" id="8vv-Wx-ioS"/>
                             <constraint firstItem="pPT-TG-QIM" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="16" id="GiU-0q-fRD"/>
                             <constraint firstItem="FL6-yt-5VH" firstAttribute="trailing" secondItem="zhe-ae-n6Z" secondAttribute="trailing" id="INy-10-A75"/>
                             <constraint firstItem="FL6-yt-5VH" firstAttribute="bottom" secondItem="zhe-ae-n6Z" secondAttribute="bottom" id="Izl-1c-uVq"/>
@@ -136,10 +158,13 @@
                             <constraint firstItem="Xrh-4Z-2aR" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="16" id="T3C-xe-f0Q"/>
                             <constraint firstItem="yyI-rI-Hw1" firstAttribute="centerX" secondItem="o6X-yH-4gz" secondAttribute="centerX" id="asR-Yl-ZCS"/>
                             <constraint firstItem="FL6-yt-5VH" firstAttribute="trailing" secondItem="pPT-TG-QIM" secondAttribute="trailing" constant="16" id="jqd-9K-Rp3"/>
-                            <constraint firstItem="yyI-rI-Hw1" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="72" id="jum-GE-VgI"/>
+                            <constraint firstItem="yyI-rI-Hw1" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="16" id="jum-GE-VgI"/>
                             <constraint firstItem="zhe-ae-n6Z" firstAttribute="leading" secondItem="FL6-yt-5VH" secondAttribute="leading" id="sNE-xj-Njw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="friendsTableView" destination="zhe-ae-n6Z" id="F78-QS-MWN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGK-ym-BX2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -460,7 +485,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
