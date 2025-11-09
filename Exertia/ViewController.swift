@@ -179,6 +179,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Reload collection view to update cell selection states
         collectionView.reloadData()
     }
+    @IBAction func customiseBackButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
 
 
