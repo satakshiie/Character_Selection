@@ -9,7 +9,142 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Audiowide-Regular.ttf">
+            <string>Audiowide-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
+        <!--Multiplayer View Controller-->
+        <scene sceneID="13s-PX-t0O">
+            <objects>
+                <viewController id="MYp-jf-Qvs" customClass="MultiplayerViewController" customModule="Exertia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o6X-yH-4gz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrh-4Z-2aR">
+                                <rect key="frame" x="16.000000000000004" y="75" width="44.333333333333343" height="37.666666666666657"/>
+                                <color key="tintColor" name="TitleColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" weight="heavy"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPT-TG-QIM">
+                                <rect key="frame" x="322.66666666666669" y="75" width="54.333333333333314" height="37.666666666666657"/>
+                                <color key="tintColor" name="TitleColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="person.crop.circle.badge.plus" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyI-rI-Hw1">
+                                <rect key="frame" x="144.33333333333334" y="131" width="104.33333333333334" height="32"/>
+                                <fontDescription key="fontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="25"/>
+                                <color key="textColor" name="TitleColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-ae-n6Z">
+                                <rect key="frame" x="0.0" y="183" width="393" height="635"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="69" id="y5T-ic-kpy" customClass="FriendTableViewCell" customModule="Exertia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="69"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y5T-ic-kpy" id="00g-x7-u4X">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-UL-62Y">
+                                                    <rect key="frame" x="70" y="9" width="12" height="12"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <color key="tintColor" systemColor="systemGreenColor"/>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="JDF-ya-utT">
+                                                    <rect key="frame" x="132.83333333333331" y="0.0" width="213.33333333333331" height="66.333333333333329"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-XF-Z6Y">
+                                                            <rect key="frame" x="76.333333333333329" y="0.0" width="60.999999999999986" height="25.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="20"/>
+                                                            <color key="textColor" name="TitleColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="RGS-dT-A8y">
+                                                            <rect key="frame" x="0.0" y="28.666666666666668" width="213.33333333333334" height="37.666666666666657"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkS-bJ-7kt">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="37.666666666666664"/>
+                                                                    <color key="backgroundColor" name="TitleColor"/>
+                                                                    <color key="tintColor" name="TitleColor"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="filled" image="paperplane.fill" catalog="system" imagePlacement="leading" title="Invite" imagePadding="4">
+                                                                        <backgroundConfiguration key="background" strokeWidth="2">
+                                                                            <color key="strokeColor" red="0.9267578125" green="0.4055175781" blue="0.9711914062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        </backgroundConfiguration>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="small" weight="ultraLight"/>
+                                                                        <fontDescription key="titleFontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="15"/>
+                                                                        <color key="baseForegroundColor" red="0.9267578125" green="0.4055175781" blue="0.9711914062" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    </buttonConfiguration>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5e-2b-4lt">
+                                                                    <rect key="frame" x="119.66666666666666" y="0.0" width="93.666666666666657" height="37.666666666666664"/>
+                                                                    <color key="backgroundColor" red="0.48901370170000003" green="0.66796875" blue="0.6708984375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <color key="tintColor" name="TitleColor"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="filled" image="info.circle.fill" catalog="system" title="Info" imagePadding="4">
+                                                                        <backgroundConfiguration key="background" strokeWidth="2">
+                                                                            <color key="strokeColor" red="0.48901370170000003" green="0.66796875" blue="0.6708984375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        </backgroundConfiguration>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14"/>
+                                                                        <fontDescription key="titleFontDescription" name="Audiowide-Regular" family="Audiowide" pointSize="15"/>
+                                                                        <color key="baseForegroundColor" red="0.48901370170000003" green="0.66796875" blue="0.6708984375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    </buttonConfiguration>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2R-yL-DIA">
+                                                    <rect key="frame" x="27" y="9" width="55" height="55"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="I2R-yL-DIA" firstAttribute="leading" secondItem="00g-x7-u4X" secondAttribute="leading" constant="27" id="59u-6c-IbD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="I2R-yL-DIA" id="P8e-zU-d5F"/>
+                                            <outlet property="infoButton" destination="v5e-2b-4lt" id="HcB-GT-ZKj"/>
+                                            <outlet property="inviteButton" destination="LkS-bJ-7kt" id="hmI-SL-mrh"/>
+                                            <outlet property="nameLabel" destination="Quq-XF-Z6Y" id="J1P-Nt-ADQ"/>
+                                            <outlet property="statusIndicatorView" destination="ntL-UL-62Y" id="xTG-nq-Nw4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FL6-yt-5VH"/>
+                        <color key="backgroundColor" red="0.06805419922" green="0.05548095703" blue="0.16552732880000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="zhe-ae-n6Z" firstAttribute="top" secondItem="yyI-rI-Hw1" secondAttribute="bottom" constant="20" id="8vv-Wx-ioS"/>
+                            <constraint firstItem="pPT-TG-QIM" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="16" id="GiU-0q-fRD"/>
+                            <constraint firstItem="FL6-yt-5VH" firstAttribute="trailing" secondItem="zhe-ae-n6Z" secondAttribute="trailing" id="INy-10-A75"/>
+                            <constraint firstItem="FL6-yt-5VH" firstAttribute="bottom" secondItem="zhe-ae-n6Z" secondAttribute="bottom" id="Izl-1c-uVq"/>
+                            <constraint firstItem="Xrh-4Z-2aR" firstAttribute="leading" secondItem="FL6-yt-5VH" secondAttribute="leading" constant="16" id="RhO-iK-ziB"/>
+                            <constraint firstItem="Xrh-4Z-2aR" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="16" id="T3C-xe-f0Q"/>
+                            <constraint firstItem="yyI-rI-Hw1" firstAttribute="centerX" secondItem="o6X-yH-4gz" secondAttribute="centerX" id="asR-Yl-ZCS"/>
+                            <constraint firstItem="FL6-yt-5VH" firstAttribute="trailing" secondItem="pPT-TG-QIM" secondAttribute="trailing" constant="16" id="jqd-9K-Rp3"/>
+                            <constraint firstItem="yyI-rI-Hw1" firstAttribute="top" secondItem="FL6-yt-5VH" secondAttribute="top" constant="72" id="jum-GE-VgI"/>
+                            <constraint firstItem="zhe-ae-n6Z" firstAttribute="leading" secondItem="FL6-yt-5VH" secondAttribute="leading" id="sNE-xj-Njw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZGK-ym-BX2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2138.1679389312976" y="774.64788732394368"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -91,10 +226,11 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muA-QN-DU9">
-                                <rect key="frame" x="16" y="115" width="75" height="35"/>
+                                <rect key="frame" x="34" y="116" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="chevron.left" catalog="system"/>
                                 <connections>
                                     <action selector="customiseBackButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vvr-6P-fDf"/>
                                 </connections>
@@ -138,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-903" y="776"/>
+            <point key="canvasLocation" x="-863" y="775"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="0Qc-Rx-xI8">
@@ -161,6 +297,9 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="MultiplayerButton"/>
+                                        <connections>
+                                            <segue destination="MYp-jf-Qvs" kind="presentation" modalPresentationStyle="fullScreen" id="tr4-fW-VIb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeN-yW-EyS">
                                         <rect key="frame" x="129.33333333333334" y="0.0" width="115" height="91"/>
@@ -307,6 +446,10 @@
         <image name="WhatsApp Image 2025-09-24 at 14.26.03" width="1024" height="683"/>
         <image name="character1" width="249" height="471"/>
         <image name="character1bg" width="860" height="1344"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="114"/>
         <namedColor name="TitleColor">
             <color red="0.98799997568130493" green="0.93699997663497925" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -315,6 +458,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
