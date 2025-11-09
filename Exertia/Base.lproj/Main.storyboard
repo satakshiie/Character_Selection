@@ -138,12 +138,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="24"/>
+            <point key="canvasLocation" x="-903" y="776"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="0Qc-Rx-xI8">
             <objects>
-                <viewController id="qFn-1S-K2f" sceneMemberID="viewController">
+                <viewController id="qFn-1S-K2f" customClass="HomeViewController" customModule="Exertia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x8C-7f-QhX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,6 +228,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="PlayButtonWithText"/>
+                                <connections>
+                                    <segue destination="0Yl-lK-G5x" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="rBF-8z-ku3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iTW-7f-5mw"/>
@@ -246,6 +249,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifY-fx-nM8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-903.05343511450383" y="15.492957746478874"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="iSu-ra-8SF">
+            <objects>
+                <viewController id="0Yl-lK-G5x" customClass="GameViewController" customModule="Exertia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ab7-Pf-ZhG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-ma-xgN" customClass="ARView" customModule="RealityKit">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueo-q7-cpp">
+                                        <rect key="frame" x="35" y="77" width="62" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Back"/>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="0Yl-lK-G5x" eventType="touchUpInside" id="E1Z-UJ-4ak"/>
+                                            <action selector="backButtonTapped:" destination="Rnc-V4-EWg" eventType="touchDown" id="lXG-W3-HHE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bJq-HJ-YF6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5jg-ma-xgN" secondAttribute="bottom" id="0d1-sx-kpo"/>
+                            <constraint firstItem="5jg-ma-xgN" firstAttribute="trailing" secondItem="bJq-HJ-YF6" secondAttribute="trailing" id="Fx7-nn-Y5u"/>
+                            <constraint firstItem="5jg-ma-xgN" firstAttribute="top" secondItem="bJq-HJ-YF6" secondAttribute="top" id="JqJ-AW-EIx"/>
+                            <constraint firstItem="5jg-ma-xgN" firstAttribute="leading" secondItem="bJq-HJ-YF6" secondAttribute="leading" id="OgD-go-Ons"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="5jg-ma-xgN" id="P2m-v5-kdW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GUW-LE-g5u" sceneMemberID="firstResponder"/>
+                <exit id="Rnc-V4-EWg" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
