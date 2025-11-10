@@ -16,6 +16,28 @@ struct Friend {
 class MultiplayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var friendsTableView: UITableView!
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    @IBOutlet weak var idTextField: UITextField!
+    
+    @IBOutlet weak var addFriendPopupView: UIView!
+    
+    @IBAction func addFriendButtonTapped(_ sender: Any) {
+        blurView.isHidden = false
+        addFriendPopupView.isHidden = false
+    }
+    
+    @IBAction func closeAddFriendTapped(_ sender: Any) {
+        blurView.isHidden = true
+        addFriendPopupView.isHidden = true
+        
+    }
+    
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    
+    
+    
     var onlineFriends: [Friend] = []
     var offlineFriends: [Friend] = []
     override func viewDidLoad() {
@@ -35,6 +57,12 @@ class MultiplayerViewController: UIViewController, UITableViewDataSource, UITabl
         onlineFriends = allFriends.filter { $0.isOnline }
         offlineFriends = allFriends.filter { !$0.isOnline }
         friendsTableView.backgroundColor = .clear
+        addFriendPopupView.layer.cornerRadius = 23 // Or your desired radius
+        addFriendPopupView.layer.masksToBounds = true
+        addFriendPopupView.layer.borderWidth = 2
+        addFriendPopupView.layer.borderColor = UIColor(hex: "#FFEFBE").cgColor
+        styleTextField(usernameTextField)
+        styleTextField(idTextField)
     }
     
     @IBAction func multiplayerBackButtonTapped(_ sender: Any) {
@@ -56,7 +84,7 @@ class MultiplayerViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
             if let headerView = view as? UITableViewHeaderFooterView {
                 headerView.textLabel?.font = UIFont(name: "Audiowide-Regular", size: 14) // Your custom font
-                headerView.textLabel?.textColor = UIColor(hex: "FFEFBE") // Or your desired color
+                headerView.textLabel?.textColor = UIColor(hex: "FFEFBE")
             }
         }
     
@@ -96,5 +124,36 @@ class MultiplayerViewController: UIViewController, UITableViewDataSource, UITabl
             // You'll need to adjust this to match your cell's height + top/bottom margins
             // (80 for the cell + 16 for margins = 96)
             return 96
+        }
+        
+    // Add this helper function to your class
+        func styleTextField(_ textField: UITextField) {
+            // --- 1. SETS THE FILL COLOR ---
+            // (You can also set this in Storyboard)
+            textField.backgroundColor = UIColor(hex: "#D9D9D9") // Your cream color
+            
+            // --- 2. SETS THE ROUNDED CORNERS ---
+            textField.layer.cornerRadius = textField.frame.height / 2
+            textField.layer.masksToBounds = true
+            
+            // --- 3. THIS IS THE NEW PART (ADDS THE BORDER) ---
+            textField.layer.borderWidth = 2 // Sets the border thickness
+            textField.layer.borderColor = UIColor(hex: "#FFFFFF").cgColor // Sets border color to white
+            
+            // --- 4. THIS ADDS PADDING ---
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textField.frame.height))
+            textField.leftView = paddingView
+            textField.leftViewMode = .always
+            
+            // --- 5. BONUS: STYLE THE PLACEHOLDER TEXT ---
+            textField.attributedPlaceholder = NSAttributedString(
+                string: textField.placeholder ?? "",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.6)]
+            )
+            let placeholderColor = UIColor.gray.withAlphaComponent(0.6)
+                    textField.attributedPlaceholder = NSAttributedString(
+                        string: textField.placeholder ?? "",
+                        attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
+                    )
         }
     }
