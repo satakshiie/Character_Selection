@@ -170,7 +170,7 @@
             </objects>
             <point key="canvasLocation" x="-2138.1679389312976" y="774.64788732394368"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Selection-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Exertia" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,6 +258,18 @@
                                 <buttonConfiguration key="configuration" style="filled" image="chevron.left" catalog="system"/>
                                 <connections>
                                     <action selector="customiseBackButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vvr-6P-fDf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sn-k6-yIY">
+                                <rect key="frame" x="310" y="437" width="60" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Next">
+                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="G6b-c9-wsu" kind="presentation" modalPresentationStyle="fullScreen" id="ymP-Z9-3NF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -885,6 +897,7 @@
                             <constraint firstItem="V82-U3-oaW" firstAttribute="bottom" secondItem="9UV-Iz-G97" secondAttribute="bottom" constant="-20" id="uJj-aa-Dnk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wpP-Xp-nNh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKY-Vo-ZnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -917,8 +930,14 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
