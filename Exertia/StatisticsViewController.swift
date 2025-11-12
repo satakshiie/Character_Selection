@@ -9,28 +9,36 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var dailyreportView: UIView!
+    @IBOutlet weak var headingLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .black
           
         
-        let gradientHeight: CGFloat = 150  // Adjust between 450-550 for your preference
+        let gradientHeight: CGFloat = 150
         let gradientView = AnimatedGradientView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: gradientHeight))
         gradientView.autoresizingMask = [.flexibleWidth]
         view.insertSubview(gradientView, at: 0)
-        // Do any additional setup after loading the view.
+        
+        nameLabel.text = "Satakshi"
+        nameLabel.font = .systemFont(ofSize: 20, weight: .regular)
+        nameLabel.textColor = .white
+        nameLabel.alpha = 0.8
+        
+        headingLabel.font = .systemFont(ofSize: 24, weight: .light)
+        
+
+        dailyreportView.layer.cornerRadius = 12
+        dailyreportView.clipsToBounds = true
+      
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
