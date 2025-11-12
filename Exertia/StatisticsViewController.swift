@@ -14,6 +14,9 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var dailyreportView: UIView!
     @IBOutlet weak var headingLabel: UILabel!
     
+    @IBOutlet weak var lastSessionCardView: UIView!
+    
+    @IBOutlet weak var personalBestCardView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +37,16 @@ class StatisticsViewController: UIViewController {
         headingLabel.font = .systemFont(ofSize: 24, weight: .light)
         
 
-        dailyreportView.layer.cornerRadius = 12
+        dailyreportView.layer.cornerRadius = 20
         dailyreportView.clipsToBounds = true
       
-        
+        let cardCornerRadius: CGFloat = 20.0 // You can change this value
+
+            lastSessionCardView.layer.cornerRadius = cardCornerRadius
+            lastSessionCardView.clipsToBounds = true
+
+            personalBestCardView.layer.cornerRadius = cardCornerRadius
+            personalBestCardView.clipsToBounds = true
         
     }
     
