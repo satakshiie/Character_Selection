@@ -18,6 +18,10 @@ class StatisticsViewController: UIViewController {
     
     @IBOutlet weak var personalBestCardView: UIView!
     
+    @IBOutlet weak var todayRuntimeWidgetView: UIView!
+    @IBOutlet weak var todayWeightWidgetView: UIView!
+    @IBOutlet weak var targetWeightWidgetView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +52,16 @@ class StatisticsViewController: UIViewController {
             personalBestCardView.layer.cornerRadius = cardCornerRadius
             personalBestCardView.clipsToBounds = true
         
+        let widgetRadius: CGFloat = 25 // Your value
+            
+            targetWeightWidgetView.layer.cornerRadius = widgetRadius
+            targetWeightWidgetView.clipsToBounds = true
+            
+            todayWeightWidgetView.layer.cornerRadius = widgetRadius
+            todayWeightWidgetView.clipsToBounds = true
+            
+            todayRuntimeWidgetView.layer.cornerRadius = widgetRadius
+            todayRuntimeWidgetView.clipsToBounds = true
     }
     
 }
