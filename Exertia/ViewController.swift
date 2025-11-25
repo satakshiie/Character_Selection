@@ -38,7 +38,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         
         titleLabel.font = UIFont(name: "Audiowide-Regular", size: 30)
-        titleLabel.text = "Choose Your Player"
+        titleLabel.text = "Choose Character"
         titleLabel.textColor = UIColor(named: "TitleColor")
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
