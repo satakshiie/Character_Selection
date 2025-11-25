@@ -10,11 +10,15 @@ class CharacterSelectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Data
-    // We reference the static data we created earlier
-    let players = GameData.players
-    
-    // Tracks which player is currently active
-    var selectedIndex: Int = 0
+    // Reference the shared singleton data
+    var gameData = GameData.shared
+    // MARK: - Navigation Actions
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        // This triggers the "Move Down" animation automatically
+        self.dismiss(animated: true, completion: nil)
+    }
+    // Tracks which player is currently being viewed (may differ from selected)
+    var currentViewingIndex: Int = 0
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -24,8 +28,9 @@ class CharacterSelectionViewController: UIViewController {
         
         setupCollectionView()
         
-        // Load the initial player (Index 0)
-        updateMainDisplay(index: 0)
+        // Load the currently selected player
+        currentViewingIndex = gameData.getSelectedIndex()
+        updateMainDisplay(index: currentViewingIndex)
     }
     
     // MARK: - Setup
@@ -44,7 +49,7 @@ class CharacterSelectionViewController: UIViewController {
     
     // MARK: - Update UI Logic
     func updateMainDisplay(index: Int) {
-        let player = players[index]
+        let player = gameData.players[index]
         
         // 1. Text Updates
         nameLabel.text = player.name.uppercased()
@@ -83,7 +88,7 @@ extension CharacterSelectionViewController: UICollectionViewDelegate, UICollecti
     
     // MARK: - DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return gameData.players.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -91,15 +96,23 @@ extension CharacterSelectionViewController: UICollectionViewDelegate, UICollecti
             return UICollectionViewCell()
         }
         
-        let player = players[indexPath.row]
-        let isSelected = (indexPath.row == selectedIndex)
-        cell.configure(player: player, isSelected: isSelected)
+        let player = gameData.players[indexPath.row]
+        // Use the isSelected property from the player model
+        cell.configure(player: player, isSelected: player.isSelected)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
-        updateMainDisplay(index: selectedIndex)
+        // Update the selection in the shared GameData
+        _ = gameData.selectPlayer(at: indexPath.row)
+        
+        // Update the viewing index
+        currentViewingIndex = indexPath.row
+        
+        // Update the main display
+        updateMainDisplay(index: currentViewingIndex)
+        
+        // Reload to reflect selection state
         collectionView.reloadData()
     }
 

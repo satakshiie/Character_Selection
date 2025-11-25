@@ -59,9 +59,10 @@ class TrackViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @IBAction func backButtonTapped(_ sender: UIButton) {
-        // Handle back button action
-        dismiss(animated: true, completion: nil)
+        // This triggers the "Move Down" animation automatically
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {

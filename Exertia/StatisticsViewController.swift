@@ -124,7 +124,10 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
             }
         }
     
-    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        // This triggers the "Move Down" animation automatically
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func toggleControl(_ control: CustomToggleControl, didSelectCalBurn isCalBurnSelected: Bool) {
             // When the toggle is tapped, this method is called.

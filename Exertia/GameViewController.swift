@@ -172,7 +172,9 @@ class GameViewController: UIViewController {
             }
             .store(in: &cancellables)
     }
-    @IBAction func backButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true)
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        // This triggers the "Move Down" animation automatically
+        self.dismiss(animated: true, completion: nil)
     }
 }

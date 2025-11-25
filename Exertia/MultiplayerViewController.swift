@@ -36,7 +36,10 @@ class MultiplayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
-    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        // This triggers the "Move Down" animation automatically
+        self.dismiss(animated: true, completion: nil)
+    }
     
     var onlineFriends: [Friend] = []
     var offlineFriends: [Friend] = []
