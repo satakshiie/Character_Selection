@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0EF-Bs-OjJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0vT-jF-YuP">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -1028,6 +1028,62 @@
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="774.64788732394368"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="daY-Dm-NzO">
+            <objects>
+                <viewController id="4wR-Ji-Yth" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xlh-M8-q2o">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileBg" translatesAutoresizingMaskIntoConstraints="NO" id="D0i-4n-glF">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lju-V1-JF6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="D0i-4n-glF" secondAttribute="bottom" id="D39-P2-dDq"/>
+                            <constraint firstAttribute="trailing" secondItem="D0i-4n-glF" secondAttribute="trailing" id="Ttt-tK-3L9"/>
+                            <constraint firstItem="D0i-4n-glF" firstAttribute="top" secondItem="Xlh-M8-q2o" secondAttribute="top" id="YrQ-fG-ysm"/>
+                            <constraint firstItem="D0i-4n-glF" firstAttribute="leading" secondItem="Xlh-M8-q2o" secondAttribute="leading" id="iWK-LD-ZYI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="bVz-QW-kRI">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="ARD-H9-5ew">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="tEM-gG-awG">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="50g-We-mfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1887.7862595419847" y="418.3098591549296"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nFa-Zm-dCa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0vT-jF-YuP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YiP-74-caA">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4wR-Ji-Yth" kind="relationship" relationship="rootViewController" id="gEA-kS-jGl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OvE-Le-O1L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961.06870229007632" y="418.3098591549296"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Badge" width="108" height="114"/>
@@ -1035,6 +1091,7 @@
         <image name="ExertiaHomePageTitle" width="315" height="202"/>
         <image name="MultiplayerButton" width="143" height="118"/>
         <image name="PlayButtonWithText" width="224" height="168"/>
+        <image name="ProfileBg" width="860" height="1864"/>
         <image name="ProfileButton" width="32" height="26"/>
         <image name="StarTopImage" width="85" height="40"/>
         <image name="StatisticsButton" width="115" height="118"/>
@@ -1047,6 +1104,7 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="flame" catalog="system" width="106" height="128"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="114"/>
