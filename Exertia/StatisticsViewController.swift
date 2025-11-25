@@ -12,9 +12,10 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var lastSessionCardView: UIView!
     @IBOutlet weak var personalBestCardView: UIView!
-    @IBOutlet weak var todayRuntimeWidgetView: UIView!
-    @IBOutlet weak var todayWeightWidgetView: UIView!
-    @IBOutlet weak var targetWeightWidgetView: UIView!
+  
+    @IBOutlet weak var goalCard: WeightGoalCardView!
+    
+    
   
     @IBOutlet weak var dailyReportToggleControl: CustomToggleControl!
     
@@ -27,7 +28,7 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
         view.backgroundColor = .black
           
         
-        let gradientHeight: CGFloat = 150
+        let gradientHeight: CGFloat = 200
         let gradientView = AnimatedGradientView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: gradientHeight))
         gradientView.autoresizingMask = [.flexibleWidth]
         view.insertSubview(gradientView, at: 0)
@@ -37,7 +38,7 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
         nameLabel.textColor = .white
         nameLabel.alpha = 0.8
         
-        headingLabel.font = .systemFont(ofSize: 24, weight: .light)
+        headingLabel.font = .systemFont(ofSize: 20, weight: .light)
         
 
         dailyreportView.layer.cornerRadius = 20
@@ -51,7 +52,7 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
             personalBestCardView.layer.cornerRadius = cardCornerRadius
             personalBestCardView.clipsToBounds = true
         
-        let widgetRadius: CGFloat = 25
+        /* let widgetRadius: CGFloat = 25
             
             targetWeightWidgetView.layer.cornerRadius = widgetRadius
             targetWeightWidgetView.clipsToBounds = true
@@ -60,11 +61,18 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
             todayWeightWidgetView.clipsToBounds = true
             
             todayRuntimeWidgetView.layer.cornerRadius = widgetRadius
-            todayRuntimeWidgetView.clipsToBounds = true
+            todayRuntimeWidgetView.clipsToBounds = true */
         
         self.userProfile = createMockUserData()
         dailyReportToggleControl.delegate = self
         updateDailyReportCard(isCalBurnSelected: true)
+        
+        goalCard.setProgress(to: 0.0)
+            
+           
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.goalCard.setProgress(to: 0.5)
+            }
     }
     func updateDailyReportCard(isCalBurnSelected: Bool) {
             guard let user = userProfile else { return }
@@ -123,6 +131,9 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
             // We then call our update function to reflect the new state.
             updateDailyReportCard(isCalBurnSelected: isCalBurnSelected)
         }
+    @IBAction func statsBackButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
 
 extension StatisticsViewController {
