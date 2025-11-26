@@ -14,7 +14,8 @@ class ProfileViewController: UIViewController,UITableViewDataSource, UITableView
     @IBOutlet weak var inProgressButton: UIButton!
     @IBOutlet weak var underlineCenterConstraint: NSLayoutConstraint!
     
-    let badges = ["First Run", "Comet Leap", "Social Voyager", "Galaxy Walker", "Marathon Star"]
+    let badges = ["First Run", "Comet Leap", "Social Voyager"]
+    var isShowingCompleted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,13 @@ class ProfileViewController: UIViewController,UITableViewDataSource, UITableView
         return 110
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return badges.count
+            if isShowingCompleted {
+                // If on "Completed" tab, show all badges
+                return badges.count
+            } else {
+                // If on "In Progress" tab, show nothing
+                return 0
+            }
         }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,41 +58,64 @@ class ProfileViewController: UIViewController,UITableViewDataSource, UITableView
         // Now you can access your outlets!
         let badgeName = badges[indexPath.row]
         
+
         cell.titleLabel.text = badgeName
-        cell.subtitleLabel.text = "Unlocked: \(badgeName)"
-        
-        // Set the icon
-        cell.badgeIcon.image = UIImage(systemName: "medal.fill")
-        cell.badgeIcon.tintColor = .systemYellow
-        
+                
+                // 2. Set Description & Custom Image based on the Badge Name
+                switch badgeName {
+                case "First Run":
+                    cell.subtitleLabel.text = "Complete your first 1-kilometer"
+                    // REPLACE "badge_gold" with your actual asset name
+                    cell.badgeIcon.image = UIImage(named: "gold")
+                    
+                case "Comet Leap":
+                    cell.subtitleLabel.text = "Jump 100 times in a single run"
+                    // REPLACE "badge_blue" with your actual asset name
+                    cell.badgeIcon.image = UIImage(named: "silver")
+                    
+                case "Social Voyager":
+                    cell.subtitleLabel.text = "Invite a friend"
+                    // REPLACE "badge_purple" with your actual asset name
+                    cell.badgeIcon.image = UIImage(named: "bronze")
+                    
+                default:
+                    cell.subtitleLabel.text = "Badge Unlocked!"
+                    cell.badgeIcon.image = UIImage(systemName: "star.circle.fill") // Fallback
+                }
+        cell.badgeIcon.tintColor = .clear
+        cell.badgeIcon.contentMode = .scaleAspectFit
         return cell
     }
         
-        @IBAction func tabTapped(_ sender: UIButton) {
-           
+    @IBAction func tabTapped(_ sender: UIButton) {
             
             if sender == inProgressButton {
-                // Move Center to 0 (This means "Align exactly with Button 1's center")
-                underlineCenterConstraint.constant = 0
+                // 1. Switch Logic
+                isShowingCompleted = false // Hide data
                 
-                // Colors
+                // 2. Move Slider & Colors
+                underlineCenterConstraint.constant = 0
                 inProgressButton.setTitleColor(.white, for: .normal)
                 completedButton.setTitleColor(.lightGray, for: .normal)
                 
             } else {
-                // Move Center to the Right by the width of the button
-                // This lands it exactly in the center of Button 2
-                underlineCenterConstraint.constant = inProgressButton.frame.width
+                // 1. Switch Logic
+                isShowingCompleted = true // Show data
                 
-                // Colors
+                // 2. Move Slider & Colors
+                underlineCenterConstraint.constant = inProgressButton.frame.width
                 inProgressButton.setTitleColor(.lightGray, for: .normal)
                 completedButton.setTitleColor(.white, for: .normal)
             }
             
-            // Animate
+            // 3. Animate Slider
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
+            
+            // 4. REFRESH THE TABLE (Crucial Step!)
+            // This forces the table to check the variable and run 'numberOfRowsInSection' again
+            tableView.reloadData()
         }
 
 

@@ -52,16 +52,6 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
             personalBestCardView.layer.cornerRadius = cardCornerRadius
             personalBestCardView.clipsToBounds = true
         
-        /* let widgetRadius: CGFloat = 25
-            
-            targetWeightWidgetView.layer.cornerRadius = widgetRadius
-            targetWeightWidgetView.clipsToBounds = true
-            
-            todayWeightWidgetView.layer.cornerRadius = widgetRadius
-            todayWeightWidgetView.clipsToBounds = true
-            
-            todayRuntimeWidgetView.layer.cornerRadius = widgetRadius
-            todayRuntimeWidgetView.clipsToBounds = true */
         
         self.userProfile = createMockUserData()
         dailyReportToggleControl.delegate = self
