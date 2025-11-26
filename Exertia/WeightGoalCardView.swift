@@ -59,22 +59,37 @@ class WeightGoalCardView: UIView {
         }
         
 
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            if progressView.layer.sublayers?.first is CAGradientLayer == false {
-                        let gradient = CAGradientLayer()
-                        gradient.colors = [
-                            UIColor(red: 1.0, green: 0.9, blue: 0.6, alpha: 1.0).cgColor, // Pale Yellow
-                            UIColor.systemPink.cgColor                                    // Pink
-                        ]
-                        gradient.startPoint = CGPoint(x: 0.0, y: 0.5) // Left
-                        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)   // Right
-                        progressView.layer.insertSublayer(gradient, at: 0)
-                    }
-            if let gradient = progressView.layer.sublayers?.first as? CAGradientLayer {
-                        gradient.frame = progressView.bounds
-                        gradient.cornerRadius = progressView.layer.cornerRadius
-                    }
-                }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Check if we already added the gradient. If not, create and add it.
+        if progressView.layer.sublayers?.first is CAGradientLayer == false {
+            let gradient = CAGradientLayer()
+            
+            // 1. The 4 Colors from Figma
+            gradient.colors = [
+                UIColor(hex: "#FFEFBE").cgColor, // Pale Yellow
+                UIColor(hex: "#FFA6DF").cgColor, // Pinkish
+                UIColor(hex: "#FF81EF").cgColor, // Darker Pink
+                UIColor(hex: "#FF5CFF").cgColor  // Purple/Magenta
+            ]
+            
+            // 2. The Locations (Percentages converted to 0.0 - 1.0)
+            // 0%, 47%, 74%, 97%
+            gradient.locations = [0.0, 0.47, 0.74, 0.97]
+            
+            // 3. Direction: Left to Right
+            gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+            gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+            
+            progressView.layer.insertSublayer(gradient, at: 0)
+        }
+        
+        // Update the gradient frame if the view layout changes
+        if let gradient = progressView.layer.sublayers?.first as? CAGradientLayer {
+            gradient.frame = progressView.bounds
+            gradient.cornerRadius = progressView.layer.cornerRadius
+        }
+    }
     }
 
