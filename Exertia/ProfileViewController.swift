@@ -14,7 +14,33 @@ class ProfileViewController: UIViewController,UITableViewDataSource, UITableView
     @IBOutlet weak var inProgressButton: UIButton!
     @IBOutlet weak var underlineCenterConstraint: NSLayoutConstraint!
     
-    let badges = ["First Run", "Comet Leap", "Social Voyager"]
+    // Completed Badges
+    var completedBadges = ["First Run", "Comet Leap", "Social Voyager"]
+    
+    // In Progress Badges
+    var inProgressBadges = ["Villan Destroyer", "Streak Master"]
+    var inProgressBadgeProgress: [String: Float] = [
+        "Villan Destroyer": 0.4,
+        "Streak Master": 0.7
+    ]
+    
+    // Merged Badge Data
+    let badgeDescriptions: [String: String] = [
+        "First Run": "Complete your first 1-kilometer",
+        "Comet Leap": "Jump 100 times in a single run",
+        "Social Voyager": "Invite a friend",
+        "Villan Destroyer": "Use a total of 20 combo moves",
+        "Streak Master": "Maintain a 7 days streak"
+    ]
+    
+    let badgeImages: [String: String] = [
+        "First Run": "gold",
+        "Comet Leap": "silver",
+        "Social Voyager": "bronze",
+        "Villan Destroyer": "inprogress",
+        "Streak Master": "silver"
+    ]
+    
     var isShowingCompleted = false
     
     override func viewDidLoad() {
@@ -30,58 +56,77 @@ class ProfileViewController: UIViewController,UITableViewDataSource, UITableView
                 // 2. Connect the TableView Logic
                 tableView.dataSource = self
                 tableView.delegate = self
+        
+        // Check and move completed badges
+        updateCompletedBadges()
+    }
+    
+    /// Check if any in-progress badges have 100% progress and move them to completed
+    func updateCompletedBadges() {
+        let completedBadgesThisSession = inProgressBadges.filter { badge in
+            let progress = inProgressBadgeProgress[badge] ?? 0.0
+            return progress >= 1.0
+        }
+        
+        // Move completed badges to completed list
+        for badge in completedBadgesThisSession {
+            if !completedBadges.contains(badge) {
+                completedBadges.append(badge)
+                inProgressBadges.removeAll { $0 == badge }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if isShowingCompleted {
-                // If on "Completed" tab, show all badges
-                return badges.count
-            } else {
-                // If on "In Progress" tab, show nothing
-                return 0
-            }
+        if isShowingCompleted {
+            return completedBadges.count
+        } else {
+            return inProgressBadges.count
         }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // 1. Use the Identifier "BadgeCell" (What you typed in Storyboard Attributes)
-        // 2. Cast it to 'BadgeSwiftTableViewCell' (The actual filename/class name)
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BadgeCell", for: indexPath) as? BadgeSwiftTableViewCell else {
             return UITableViewCell()
         }
-    
         
-        // Now you can access your outlets!
-        let badgeName = badges[indexPath.row]
+        if isShowingCompleted {
+            // Completed Tab Data
+            let badgeName = completedBadges[indexPath.row]
+            cell.titleLabel.text = badgeName
+            cell.subtitleLabel.text = badgeDescriptions[badgeName] ?? "Badge Unlocked!"
+            cell.badgeIcon.image = UIImage(named: badgeImages[badgeName] ?? "gold")
+            
+            // Completed tab: show subtitle, hide progress bar, full opacity badge
+            cell.subtitleLabel.isHidden = false
+            cell.progressBar?.isHidden = true
+            cell.progressPercentageLabel?.isHidden = true
+            cell.badgeIcon.alpha = 1.0
+        } else {
+            // In Progress Tab Data
+            let badgeName = inProgressBadges[indexPath.row]
+            cell.titleLabel.text = badgeName
+            cell.badgeIcon.image = UIImage(named: badgeImages[badgeName] ?? "gold")
+            
+            // In Progress tab: hide subtitle, show progress bar, reduced opacity badge
+            cell.subtitleLabel.isHidden = true
+            cell.progressBar?.isHidden = false
+            cell.badgeIcon.alpha = 0.5
+            
+            // Set progress
+            let progress = inProgressBadgeProgress[badgeName] ?? 0.5
+            cell.progressBar?.progress = progress
+            
+            // Update percentage label
+            let percentage = Int(progress * 100)
+            cell.progressPercentageLabel?.text = "\(percentage)%"
+            cell.progressPercentageLabel?.isHidden = false
+        }
         
-
-        cell.titleLabel.text = badgeName
-                
-                // 2. Set Description & Custom Image based on the Badge Name
-                switch badgeName {
-                case "First Run":
-                    cell.subtitleLabel.text = "Complete your first 1-kilometer"
-                    // REPLACE "badge_gold" with your actual asset name
-                    cell.badgeIcon.image = UIImage(named: "gold")
-                    
-                case "Comet Leap":
-                    cell.subtitleLabel.text = "Jump 100 times in a single run"
-                    // REPLACE "badge_blue" with your actual asset name
-                    cell.badgeIcon.image = UIImage(named: "silver")
-                    
-                case "Social Voyager":
-                    cell.subtitleLabel.text = "Invite a friend"
-                    // REPLACE "badge_purple" with your actual asset name
-                    cell.badgeIcon.image = UIImage(named: "bronze")
-                    
-                default:
-                    cell.subtitleLabel.text = "Badge Unlocked!"
-                    cell.badgeIcon.image = UIImage(systemName: "star.circle.fill") // Fallback
-                }
         cell.badgeIcon.tintColor = .clear
         cell.badgeIcon.contentMode = .scaleAspectFit
         return cell

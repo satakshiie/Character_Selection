@@ -364,10 +364,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99E-ae-KaE">
-                                <rect key="frame" x="318" y="67" width="56" height="40"/>
+                                <rect key="frame" x="321" y="70" width="50" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ProfileButton"/>
+                                <buttonConfiguration key="configuration" style="plain" image="person.crop.circle" catalog="system">
+                                    <color key="baseForegroundColor" name="TitleColor"/>
+                                </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oN0-od-36H">
                                 <rect key="frame" x="48" y="81" width="25" height="17"/>
@@ -1120,7 +1122,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6L8-f9-ncG">
                                 <rect key="frame" x="0.0" y="451.33333333333331" width="198" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="In Progress"/>
+                                <buttonConfiguration key="configuration" style="plain" title="In Progress">
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="tabTapped:" destination="4wR-Ji-Yth" eventType="touchUpInside" id="QQw-Jn-Xo3"/>
                                 </connections>
@@ -1128,7 +1132,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcY-kT-nbh">
                                 <rect key="frame" x="198" y="451.33333333333331" width="195" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Completed"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Completed">
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="tabTapped:" destination="4wR-Ji-Yth" eventType="touchUpInside" id="blm-hp-rHP"/>
                                 </connections>
@@ -1162,8 +1168,8 @@
                                                                 <constraint firstAttribute="width" constant="60" id="UKb-5k-NtD"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XnR-m6-1KU">
-                                                            <rect key="frame" x="92" y="-20.333333333333336" width="245" height="40.666666666666664"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XnR-m6-1KU">
+                                                            <rect key="frame" x="92" y="-44.666666666666664" width="245" height="89.333333333333329"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdH-oH-YRF">
                                                                     <rect key="frame" x="0.0" y="0.0" width="245" height="20.333333333333332"/>
@@ -1172,9 +1178,20 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syl-Tb-g97">
-                                                                    <rect key="frame" x="0.0" y="20.333333333333336" width="245" height="20.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="30.333333333333329" width="245" height="20.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JDH-7x-pM0">
+                                                                    <rect key="frame" x="0.0" y="61" width="245" height="4"/>
+                                                                    <color key="progressTintColor" name="TitleColor"/>
+                                                                    <color key="trackTintColor" red="0.5" green="0.5" blue="0.5" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                                                </progressView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYZ-fT-8K1">
+                                                                    <rect key="frame" x="0.0" y="75" width="245" height="14.333333333333329"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                    <color key="textColor" name="TitleColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -1206,6 +1223,8 @@
                                         <connections>
                                             <outlet property="badgeIcon" destination="Oi5-Mu-eAN" id="D0W-Uv-rbK"/>
                                             <outlet property="cardBackgroundView" destination="8qr-3G-dSQ" id="UVK-Kx-Zbg"/>
+                                            <outlet property="progressBar" destination="JDH-7x-pM0" id="jOd-7f-Xk9"/>
+                                            <outlet property="progressPercentageLabel" destination="dYZ-fT-8K1" id="TfO-3z-KmL"/>
                                             <outlet property="subtitleLabel" destination="Syl-Tb-g97" id="O9k-uP-GXV"/>
                                             <outlet property="titleLabel" destination="wdH-oH-YRF" id="RHi-gx-fwk"/>
                                         </connections>
@@ -1291,7 +1310,6 @@
         <image name="MultiplayerButton" width="143" height="118"/>
         <image name="PlayButtonWithText" width="224" height="168"/>
         <image name="ProfileBg" width="860" height="1864"/>
-        <image name="ProfileButton" width="32" height="26"/>
         <image name="StarTopImage" width="85" height="40"/>
         <image name="StatisticsButton" width="115" height="118"/>
         <image name="StatsMainPage" width="196" height="196"/>
@@ -1307,6 +1325,7 @@
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="114"/>
         <image name="streak" width="36" height="36"/>
         <namedColor name="TitleColor">
