@@ -12,8 +12,8 @@ class HomeViewController: UIViewController {
     // MARK: - Outlets
     // Background & Character
     @IBOutlet weak var backgroundVideoView: UIView!
-    @IBOutlet weak var characterImageView: UIImageView!
-    @IBOutlet weak var characterNameLabel: UILabel!
+//    @IBOutlet weak var characterImageView: UIImageView!
+//    @IBOutlet weak var characterNameLabel: UILabel!
     
     // Stats Section
     @IBOutlet weak var statsBackgroundView: UIView!
@@ -74,14 +74,14 @@ class HomeViewController: UIViewController {
         let selectedPlayer = gameData.getSelectedPlayer()
         
         // Update character image
-        characterImageView?.image = UIImage(named: selectedPlayer.fullBodyImageName)
+//        characterImageView?.image = UIImage(named: selectedPlayer.fullBodyImageName)
         
         // Update stats box image (the colored stats card)
         statsImageView?.image = UIImage(named: selectedPlayer.statsImageName)
         
         // Update character name if you have a label for it
-        characterNameLabel?.text = selectedPlayer.name
-        
+//        characterNameLabel?.text = selectedPlayer.name
+//        
         // Update stats labels
         updateStatsDisplay()
         
@@ -96,13 +96,13 @@ class HomeViewController: UIViewController {
         let stats = gameData.stats
         
         // Header calories (e.g., "150 Cal")
-        headerCaloriesLabel?.text = "\(stats.calories) Cal"
+        headerCaloriesLabel?.text = "\(stats.calories)"
         
         // Stats calories (same value, different label)
-        statsCaloriesLabel?.text = "\(stats.calories)"
+        statsCaloriesLabel?.text = "CALORIES : \(stats.calories)"
         
         // Run time (e.g., "12 min")
-        runTimeLabel?.text = "\(stats.runTimeMinutes) min"
+        runTimeLabel?.text = "RUN TIME : \(stats.runTimeMinutes) mins"
         
         // Streak (e.g., "4")
         streakLabel?.text = "\(stats.currentStreak)"
