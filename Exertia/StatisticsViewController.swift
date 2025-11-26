@@ -26,62 +26,51 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
     @IBOutlet weak var dailyReportToggleControl: CustomToggleControl!
     
     @IBOutlet weak var dailyReportProgressCircleView: ProgressCircleView!
+    
+    @IBOutlet weak var streakLabel: UILabel!
+    
     var userProfile: UserProfile?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .black
-          
-        
-        let gradientHeight: CGFloat = 200
-        let gradientView = AnimatedGradientView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: gradientHeight))
-        gradientView.autoresizingMask = [.flexibleWidth]
-        view.insertSubview(gradientView, at: 0)
-        
-        nameLabel.text = "Satakshi"
-        nameLabel.font = .systemFont(ofSize: 20, weight: .regular)
-        nameLabel.textColor = .white
-        nameLabel.alpha = 0.8
-        
-        headingLabel.font = .systemFont(ofSize: 20, weight: .light)
-        
-
-        dailyreportView.layer.cornerRadius = 20
-        dailyreportView.clipsToBounds = true
-      
-        let cardCornerRadius: CGFloat = 20.0
+            super.viewDidLoad()
+            
+            view.backgroundColor = .black
+             
+            let gradientHeight: CGFloat = 200
+            let gradientView = AnimatedGradientView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: gradientHeight))
+            gradientView.autoresizingMask = [.flexibleWidth]
+            view.insertSubview(gradientView, at: 0)
+            
+            nameLabel.text = "Satakshi"
+            nameLabel.font = .systemFont(ofSize: 20, weight: .regular)
+            nameLabel.textColor = .white
+            nameLabel.alpha = 0.8
+            
+            headingLabel.font = .systemFont(ofSize: 20, weight: .light)
+            
+            dailyreportView.layer.cornerRadius = 20
+            dailyreportView.clipsToBounds = true
+           
+            let cardCornerRadius: CGFloat = 20.0
 
             lastSessionCardView.layer.cornerRadius = cardCornerRadius
             lastSessionCardView.clipsToBounds = true
 
             personalBestCardView.layer.cornerRadius = cardCornerRadius
             personalBestCardView.clipsToBounds = true
-        
-        /* let widgetRadius: CGFloat = 25
             
-            targetWeightWidgetView.layer.cornerRadius = widgetRadius
-            targetWeightWidgetView.clipsToBounds = true
+            self.userProfile = createMockUserData()
+            dailyReportToggleControl.delegate = self
+            updateDailyReportCard(isCalBurnSelected: true)
             
-            todayWeightWidgetView.layer.cornerRadius = widgetRadius
-            todayWeightWidgetView.clipsToBounds = true
+            // --- THESE ARE THE ONLY 2 LINES YOU NEED AT THE END ---
+            updateHistoryCards()
             
-            todayRuntimeWidgetView.layer.cornerRadius = widgetRadius
-            todayRuntimeWidgetView.clipsToBounds = true */
-        
-        self.userProfile = createMockUserData()
-        dailyReportToggleControl.delegate = self
-        updateDailyReportCard(isCalBurnSelected: true)
-        
-        goalCard.setProgress(to: 0.0)
-            
-           
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.goalCard.setProgress(to: 0.5)
-            }
-        updateHistoryCards()
-        goalCard.configure(start: 78.0, current: 75.0, target: 73.0)
-    }
+            // This sets the bar to 60% instantly and correctly
+            goalCard.configure(start: 78.0, current: 75.0, target: 73.0)
+        }
+    
+    
     func updateHistoryCards() {
             // 1. Update Last Session
             if let last = GameData.shared.lastSession {

@@ -1258,6 +1258,7 @@
                         <outlet property="personalBestCaloriesLabel" destination="DBf-Sr-Lu4" id="Djk-3D-Pfb"/>
                         <outlet property="personalBestCardView" destination="Oy2-Kt-gi6" id="hZ8-tH-YuB"/>
                         <outlet property="personalBestDurationLabel" destination="ekx-2Z-4cy" id="OBv-gQ-zl1"/>
+                        <outlet property="streakLabel" destination="Ivf-EZ-pUj" id="0jX-zF-abU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dc2-NZ-GlX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
