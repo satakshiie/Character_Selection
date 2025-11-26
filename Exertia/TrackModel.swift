@@ -26,11 +26,11 @@ enum TrackName: String, CaseIterable {
 }
 
 // MARK: - Time & Calories Struct
+// We keep this because your View Controller still needs it for the top section logic!
 struct TimeAndCalories {
     var duration: Int // in seconds
     
     // Computed property: 10 minutes (600 seconds) = 80 calories
-    // Ratio: 80 calories per 600 seconds = 0.1333 cal/sec
     var calories: Int {
         let caloriesPerSecond = 80.0 / 600.0
         return Int(Double(duration) * caloriesPerSecond)
@@ -58,21 +58,22 @@ struct TimeAndCalories {
         self.duration = minutes * 60
     }
     
-    // Set calories and update duration accordingly (maintaining 10min:80cal ratio)
+    // Set calories and update duration accordingly
     mutating func setCalories(_ targetCalories: Int) {
-        // 80 cal = 600 seconds, so seconds = (calories * 600) / 80
         self.duration = (targetCalories * 600) / 80
     }
 }
 
-// MARK: - Track Struct
+// MARK: - Track Struct (UPDATED)
 struct Track {
     let trackId: String
     let trackName: TrackName
     var isSelected: Bool
-    var timeAndCalories: TimeAndCalories
     
-    // Computed properties for convenience
+    // New: Description instead of Time/Calories
+    let description: String
+    
+    // Computed properties
     var displayName: String {
         return trackName.rawValue
     }
@@ -81,29 +82,42 @@ struct Track {
         return trackName.imageName
     }
     
-    // Static property for default time & calories shown in cells
-    static let defaultTimeAndCalories = TimeAndCalories(duration: 0)
-    
-    init(trackId: String, trackName: TrackName, isSelected: Bool = false, timeAndCalories: TimeAndCalories = Track.defaultTimeAndCalories) {
+    // Init
+    init(trackId: String, trackName: TrackName, description: String, isSelected: Bool = false) {
         self.trackId = trackId
         self.trackName = trackName
+        self.description = description
         self.isSelected = isSelected
-        self.timeAndCalories = timeAndCalories
     }
 }
 
-// MARK: - Track Manager (Optional - for managing track data)
+// MARK: - Track Manager
 class TrackManager {
     static let shared = TrackManager()
     
     private init() {}
     
-    // Create default tracks
+    // Create default tracks with descriptions
     func createDefaultTracks() -> [Track] {
         return [
-            Track(trackId: "track_001", trackName: .planetX, isSelected: true),
-            Track(trackId: "track_002", trackName: .planetY, isSelected: false),
-            Track(trackId: "track_003", trackName: .warzone, isSelected: false)
+            Track(
+                trackId: "track_001",
+                trackName: .planetX,
+                description: "A scorched desert planet with shifting sands and ancient ruins.",
+                isSelected: true
+            ),
+            Track(
+                trackId: "track_002",
+                trackName: .planetY,
+                description: "A bioluminescent underwater world teeming with alien life.",
+                isSelected: false
+            ),
+            Track(
+                trackId: "track_003",
+                trackName: .warzone,
+                description: "A futuristic cyberpunk city battleground in the sky.",
+                isSelected: false
+            )
         ]
     }
     

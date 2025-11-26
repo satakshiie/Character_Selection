@@ -121,17 +121,25 @@ extension TrackViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath) as! TrackSelectionCellTableViewCell
-        
-        let track = tracks[indexPath.row]
-        cell.configure(
-            trackName: track.displayName,
-            trackImage: track.imageName,
-            isSelected: track.isSelected
-        )
-        
-        return cell
-    }
+            // 1. Dequeue the cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath) as? TrackSelectionCellTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            // 2. Get the track data
+            // (Assuming you have a variable 'var tracks: [Track]' in this controller)
+            let track = tracks[indexPath.row]
+            
+            // 3. Configure with DESCRIPTION
+            cell.configure(
+                trackName: track.displayName,
+                description: track.description, // <-- Passing the new description here
+                trackImage: track.imageName,
+                isSelected: track.isSelected
+            )
+            
+            return cell
+        }
 }
 
 // MARK: - UITableViewDelegate
