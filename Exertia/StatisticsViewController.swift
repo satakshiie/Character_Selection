@@ -100,25 +100,28 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
 
             } else {
 
-                dailyReportValueLabel.text = "\(user.dailyKilometers)"
-                dailyReportUnitLabel.text = "Kilometers Covered"
-                dailyReportTargetValueLabel.text = "\(user.dailyTargetKilometers)"
-                dailyReportTargetUnitLabel.text = "Target Goal"
-    
+                dailyReportValueLabel.text = "\(user.dailyRunTime)"
+                            dailyReportUnitLabel.text = "Minutes Run" // Changed from "Kilometers Covered"
+                            dailyReportTargetValueLabel.text = "\(user.dailyTargetRunTime)"
+                            dailyReportTargetUnitLabel.text = "Target Goal"
 
-         
-                dailyReportValueLabel.textColor = .white
-                dailyReportUnitLabel.textColor = UIColor(red: 0.9, green: 0.8, blue: 0.3, alpha: 1.0) // Yellow
-                dailyReportTargetValueLabel.textColor = .white
-                dailyReportTargetUnitLabel.textColor = UIColor(red: 0.9, green: 0.8, blue: 0.3, alpha: 1.0) // Yellow
-                dailyReportProgressCircleView.progressRingColor = UIColor(red: 0.9, green: 0.8, blue: 0.3, alpha: 1.0) // Yellow
-                            // Calculate progress: current_value / target_value
-                            if user.dailyTargetKilometers > 0 {
-                                dailyReportProgressCircleView.progressValue = CGFloat(user.dailyKilometers) / CGFloat(user.dailyTargetKilometers)
+                            // 2. Update Colors (Keep them Yellow/Gold)
+                            let yellowColor = UIColor(red: 0.9, green: 0.8, blue: 0.3, alpha: 1.0)
+                            
+                            dailyReportValueLabel.textColor = .white
+                            dailyReportUnitLabel.textColor = yellowColor
+                            dailyReportTargetValueLabel.textColor = .white
+                            dailyReportTargetUnitLabel.textColor = yellowColor
+                            dailyReportProgressCircleView.progressRingColor = yellowColor
+                            
+                            // 3. Calculate Progress based on TIME
+                            if user.dailyTargetRunTime > 0 {
+                                dailyReportProgressCircleView.progressValue = CGFloat(user.dailyRunTime) / CGFloat(user.dailyTargetRunTime)
                             } else {
-                                dailyReportProgressCircleView.progressValue = 0 // Or 1.0 if target is 0 but current is positive
+                                dailyReportProgressCircleView.progressValue = 0
                             }
-                            dailyReportProgressCircleView.setNeedsDisplay() // Tell the view to redraw itself
+                            
+                            dailyReportProgressCircleView.setNeedsDisplay()
                         
 
             }
@@ -142,15 +145,15 @@ class StatisticsViewController: UIViewController , CustomToggleControlDelegate{
 extension StatisticsViewController {
     func createMockUserData() -> UserProfile {
 
-        
+        let sharedStats = GameData.shared.stats
         let mockUser = UserProfile(
             
 
-            dailyCaloriesBurned: 205,
+            dailyCaloriesBurned: sharedStats.calories,
             dailyTargetCalories: 250,
             
-            dailyKilometers: 5,
-            dailyTargetKilometers: 10
+            dailyRunTime: sharedStats.runTimeMinutes,
+            dailyTargetRunTime: 30
         )
             
         return mockUser

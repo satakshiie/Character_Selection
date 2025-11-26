@@ -4,6 +4,6 @@ struct UserProfile{
     var dailyCaloriesBurned: Int
     var dailyTargetCalories: Int
     
-    var dailyKilometers: Int
-    var dailyTargetKilometers: Int
+    var dailyRunTime: Int
+    var dailyTargetRunTime: Int
 }

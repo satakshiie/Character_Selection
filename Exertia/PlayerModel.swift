@@ -63,8 +63,8 @@ class GameData {
     
     // MARK: - Player Stats (User's current stats for Home screen)
     var stats = PlayerStats(
-        calories: 150,
-        runTimeMinutes: 12,
+        calories: 180,
+        runTimeMinutes: 23,
         currentStreak: 4
     )
     
