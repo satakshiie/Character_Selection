@@ -17,7 +17,7 @@ extension UIColor {
         }
 
         if cString.count != 6 {
-            self.init(white: 0.5, alpha: 1.0) // Return gray on failure
+            self.init(white: 0.5, alpha: 1.0) 
             return
         }
 

@@ -16,7 +16,6 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var statusIndicatorView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         let inviteTitle = "Invite"
         let inviteAttributes: [NSAttributedString.Key: Any] = [
